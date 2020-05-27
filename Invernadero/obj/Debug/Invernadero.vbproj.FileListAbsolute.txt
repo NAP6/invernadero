@@ -35,3 +35,6 @@ C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Usuario.g.vb
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Usuario.baml
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Control.g.vb
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Control.baml
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\M2MqttClientDotnetCore1.0.1.dll
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\System.Diagnostics.DiagnosticSource.xml

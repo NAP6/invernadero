@@ -1,4 +1,9 @@
-﻿Public Class Escritorio
+﻿Imports M2Mqtt
+Imports M2Mqtt.Messages
+Imports System.Text
+Imports System.Threading
+
+Public Class Escritorio
     Public Property historial_Tiempo As LiveCharts.SeriesCollection
     Public Property etiquetas_Tiempo As New List(Of String)
     Public Property historial_Humedad As LiveCharts.SeriesCollection
@@ -6,15 +11,63 @@
     Public Property historial_co2 As LiveCharts.SeriesCollection
     Public Property etiquetas_co2 As New List(Of String)
     Public Property formato_AxisY As Func(Of Double, String)
+    Public Property datos As Control_datos
+    Dim client As MqttClient
+    Dim Msg As StringBuilder = New StringBuilder(4096)
 
     Public Sub New()
         InitializeComponent()
+        datos = New Control_datos()
+        Mqtt_init()
         Tiempo_historial()
         Humedad_historial()
         Co2_historial()
         DataContext = Me
     End Sub
 
+
+    Private Sub Mqtt_init()
+        Try
+            client = New MqttClient(datos.Servidor)
+
+            AddHandler client.MqttMsgPublishReceived, AddressOf Client_MqttMsgPublishReceived
+            AddHandler client.ConnectionClosed, AddressOf Client_Disconnect
+
+            client.Connect(datos.MqttID, datos.Username, datos.Password)
+
+            If Not client.IsConnected Then
+                MsgBox("No se pudo establecer coneccion con el broker")
+            End If
+
+            Dim Topic() As String = {datos.Username + "/" + datos.InvernaderoID + "/sensor/in_T", datos.Username + "/" + datos.InvernaderoID + "/sensor/out_T", datos.Username + "/" + datos.InvernaderoID + "/sensor/in_H", datos.Username + "/" + datos.InvernaderoID + "/sensor/out_H", datos.Username + "/" + datos.InvernaderoID + "/sensor/in_C", datos.Username + "/" + datos.InvernaderoID + "/sensor/out_C"}
+            Dim Qos() As Byte = {0, 0, 0, 0, 0, 0}
+            client.Subscribe(Topic, Qos)
+        Catch ex As M2Mqtt.Exceptions.MqttClientException
+            MsgBox(ex.Message(), MsgBoxStyle.Critical)
+        End Try
+    End Sub
+
+    Private Sub Client_MqttMsgPublishReceived(ByVal sender As Object, ByVal e As MqttMsgPublishEventArgs)
+        Select Case e.Topic.ToString()
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/in_T"
+                datos.InternoTemperatura = Encoding.Default.GetString(e.Message)
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/out_T"
+                datos.ExternoTemperatura = Encoding.Default.GetString(e.Message)
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/in_H"
+                datos.InternoHumedad = Encoding.Default.GetString(e.Message)
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/out_H"
+                datos.ExternoHumedad = Encoding.Default.GetString(e.Message)
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/in_C"
+                datos.InternoC02 = Encoding.Default.GetString(e.Message)
+            Case datos.Username + "/" + datos.InvernaderoID + "/sensor/out_C"
+                datos.ExternoC02 = Encoding.Default.GetString(e.Message)
+            Case Else
+                MsgBox("Publicado en: " + e.Topic.ToString + " : " + Encoding.Default.GetString(e.Message))
+        End Select
+    End Sub
+    Private Sub Client_Disconnect(sender As Object, e As EventArgs)
+
+    End Sub
     Private Sub Tiempo_historial()
         '---Aqui es donde agregas la informacion recuperada del tiempo y los datos de temperatura y esas cosas---
         historial_Tiempo = New LiveCharts.SeriesCollection()
@@ -93,6 +146,9 @@
         DragMove()
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As RoutedEventArgs)
+        If (client IsNot Nothing AndAlso client.IsConnected()) Then
+            client.Disconnect()
+        End If
         Application.Current.Shutdown()
     End Sub
     Private Sub Btn_login_Click(sender As Object, e As RoutedEventArgs)
@@ -126,4 +182,5 @@
         Dim ventana As Control_ventanas = New Control_ventanas()
         ventana.cambiar("configuracion")
     End Sub
+
 End Class
