@@ -31,3 +31,5 @@ C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Escritorio.g.vb
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Login.g.vb
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Escritorio.baml
 C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Login.baml
+C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Usuario.g.vb
+C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\Usuario.baml

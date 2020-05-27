@@ -99,12 +99,13 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid x:Name="GridBarraTitulo" MouseDown="GridBarraTitulo_MouseDown" Grid.ColumnSpan="2" Background="#FF8522BD">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                <Button x:Name="btn_notificaciones" Click="Btn_notificaciones_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
                     <materialDesign:PackIcon Kind="Bell"/>
                 </Button>
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                <Button x:Name="btn_login" Click="Btn_login_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
                     <materialDesign:PackIcon Kind="Account"/>
                 </Button>
                 <Button x:Name="BtnSalir" Click="BtnSalir_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
@@ -132,37 +133,37 @@
             </Grid>
 
             <StackPanel Grid.Row="1">
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_escritorio" Click="btn_escritorio_Click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="ViewDashboard" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Escritorio" FontFamily="Gadugi" />
                     </Grid>
                 </Button>
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_perfil" Click="btn_perfil_click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Perfil" FontFamily="Gadugi" />
                     </Grid>
                 </Button>
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_tablas" Click="btn_tablas_Click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="ContentPaste" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Tablas" FontFamily="Gadugi" />
                     </Grid>
                 </Button>
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_invernadero" Click="btn_invernadero_Click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Sprout" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Invernaderos" FontFamily="Gadugi" />
                     </Grid>
                 </Button>
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_control" Click="btn_control_Click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="ControllerClassic" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Control" FontFamily="Gadugi" />
                     </Grid>
                 </Button>
-                <Button Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
+                <Button x:Name="btn_configuracion" Click="btn_configuracion_Click" Margin="10" Background="#FF8522BD" BorderBrush="#FFA46FE4">
                     <Grid Width="150">
                         <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center" Text="Configuracion" FontFamily="Gadugi" />
