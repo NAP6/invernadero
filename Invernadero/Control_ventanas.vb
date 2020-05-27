@@ -29,7 +29,7 @@
                 aux_ventana = New Usuario()
                 tipo = "invernadero"
             Case "control"
-                aux_ventana = New Usuario()
+                aux_ventana = New Control()
                 tipo = "control"
             Case "configuracion"
                 aux_ventana = New Usuario()

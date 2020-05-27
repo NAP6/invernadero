@@ -54,6 +54,16 @@ Invernadero
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="T:Invernadero.Control">
+<summary>
+Control
+</summary>
+</member>
+<member name="M:Invernadero.Control.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Invernadero.Usuario">
 <summary>
 Usuario
