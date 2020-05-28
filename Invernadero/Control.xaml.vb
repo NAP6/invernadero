@@ -1,5 +1,6 @@
 ﻿Imports M2Mqtt
 Imports M2Mqtt.Messages
+Imports System.Net
 Imports System.Text
 Imports System.Threading
 Public Class Control
@@ -15,7 +16,7 @@ Public Class Control
     End Sub
     Private Sub Mqtt_init()
         Try
-            client = New MqttClient(datos.Servidor)
+            client = New MqttClient(IPAddress.Parse(datos.Servidor), datos.puertoMqtt, False, Nothing, Nothing, MqttSslProtocols.TLSv1_2)
 
             AddHandler client.MqttMsgPublishReceived, AddressOf Client_MqttMsgPublishReceived
             AddHandler client.ConnectionClosed, AddressOf Client_Disconnect

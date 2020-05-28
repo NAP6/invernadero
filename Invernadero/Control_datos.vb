@@ -10,11 +10,13 @@ Public Class Control_datos
     Private Shared interno_c02 As String = "5"
     Private Shared externo_c02 As String = "6"
 
-    Private Shared servidor_dir As String = "localhost"
+    Private Shared servidor_dir As String = "192.168.0.103"
+    Private Shared servidor_port As Int32 = 1880
     Private Shared client_id As String = "Aplicacion"
     Private Shared client_username As String = "nicolas"
-    Private Shared client_password As String = "1234"
-    Private Shared invernadero_id As String = "invernadero_1"
+    Private Shared client_password As String = "nico05061998"
+    Private Shared invernadero_id As String = "Invernadero1"
+
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
@@ -142,6 +144,15 @@ Public Class Control_datos
     Public Property InvernaderoID() As String
         Get
             Return invernadero_id
+        End Get
+
+        Set(ByVal value As String)
+
+        End Set
+    End Property
+    Public Property puertoMqtt() As String
+        Get
+            Return servidor_port
         End Get
 
         Set(ByVal value As String)
