@@ -1,5 +1,6 @@
 ﻿Imports M2Mqtt
 Imports M2Mqtt.Messages
+Imports System.Net
 Imports System.Text
 Imports System.Threading
 
@@ -28,13 +29,11 @@ Public Class Escritorio
 
     Private Sub Mqtt_init()
         Try
-            client = New MqttClient(datos.Servidor)
-
+            ', datos.puertoMqtt, True, Nothing, Nothing, MqttSslProtocols.TLSv1_
+            client = New MqttClient(IPAddress.Parse(datos.Servidor), datos.puertoMqtt, False, Nothing, Nothing, MqttSslProtocols.TLSv1_2)
             AddHandler client.MqttMsgPublishReceived, AddressOf Client_MqttMsgPublishReceived
             AddHandler client.ConnectionClosed, AddressOf Client_Disconnect
-
             client.Connect(datos.MqttID, datos.Username, datos.Password)
-
             If Not client.IsConnected Then
                 MsgBox("No se pudo establecer coneccion con el broker")
             End If
