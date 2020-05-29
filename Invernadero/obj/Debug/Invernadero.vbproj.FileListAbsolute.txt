@@ -78,3 +78,8 @@ C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.exe
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.xml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.pdb
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\Dragablz.dll
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\Dragablz.pdb
+C:\Users\NICO\source\repos\Invernadero\Invernadero\bin\Debug\Dragablz.xml
+C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\MainGUI.g.vb
+C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\MainGUI.baml

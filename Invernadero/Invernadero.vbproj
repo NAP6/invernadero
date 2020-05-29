@@ -76,6 +76,9 @@
     <ApplicationIcon>sprout.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -263,6 +266,9 @@
     </Compile>
     <Compile Include="Control_datos.vb" />
     <Compile Include="Control_ventanas.vb" />
+    <Compile Include="MainGUI.xaml.vb">
+      <DependentUpon>MainGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.xaml.vb">
       <DependentUpon>Usuario.xaml</DependentUpon>
     </Compile>
@@ -288,6 +294,10 @@
     <Compile Include="Login.xaml.vb">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Usuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

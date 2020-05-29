@@ -10,7 +10,7 @@ Public Class Control_datos
     Private Shared interno_c02 As String = "5"
     Private Shared externo_c02 As String = "6"
 
-    Private Shared servidor_dir As String = "192.168.0.103"
+    Private Shared servidor_dir As String = "localhost"
     Private Shared servidor_port As Int32 = 1880
     Private Shared client_id As String = "Aplicacion"
     Private Shared client_username As String = "nicolas"

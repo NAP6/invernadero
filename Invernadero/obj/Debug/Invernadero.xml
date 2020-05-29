@@ -64,6 +64,16 @@ Control
 InitializeComponent
 </summary>
 </member>
+<member name="T:Invernadero.MainGUI">
+<summary>
+MainGUI
+</summary>
+</member>
+<member name="M:Invernadero.MainGUI.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Invernadero.Usuario">
 <summary>
 Usuario
