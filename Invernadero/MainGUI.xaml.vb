@@ -19,6 +19,8 @@
 
         Tabla.ItemsSource = dat
 
+        combo_invernadero.Items.Add("Invrnadero 1")
+        combo_invernadero.Items.Add("Invrnadero 2")
     End Sub
 
     Private Sub btn_enfriar_Click(sender As Object, e As RoutedEventArgs)

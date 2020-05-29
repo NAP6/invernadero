@@ -93,6 +93,10 @@
     <Grid>
         <!-- Toda la parte superior (Titulo, boton de salida y selector de invernadero) -->
         <Grid Height="60" VerticalAlignment="Top" Background="#FF9C27B0">
+            <StackPanel Orientation="Horizontal"  Margin="20 0">
+                <materialDesign:PackIcon Kind="Sprout" Foreground="White" VerticalAlignment="Center" Margin="0 0 10 0" Height="20" Width="20"/>
+                <ComboBox Name="combo_invernadero" materialDesign:HintAssist.Hint="Invernadero" Foreground="White" HorizontalAlignment="Left" />
+            </StackPanel>
             <!-- Aqui debe ir la pestaña para seleccionar el invernadero -->
             <TextBlock Text="Greentech" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Century" />
             <Button HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}">
@@ -340,7 +344,7 @@
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="1*"/>
-                                            <RowDefinition Height="100"/>
+                                            <RowDefinition Height="160"/>
                                         </Grid.RowDefinitions>
 
                                         <Grid Grid.Row="0">
@@ -376,7 +380,19 @@
                                                     <TextBox materialDesign:HintAssist.Hint="Regar cuando la humedad baje de:" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"/>
                                                     <TextBox materialDesign:HintAssist.Hint="Calentar cuando la temperatura suba de:" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0 5"/>
                                                 </Grid>
-                                                <CheckBox HorizontalAlignment="Center">Aplicar configuracion</CheckBox>
+                                                <Grid>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <ToggleButton Style="{StaticResource MaterialDesignActionToggleButton}" ToolTip="MaterialDesignActionLightToggleButton">
+                                                            <ToggleButton.Content>
+                                                                <materialDesign:PackIcon Kind="Check" />
+                                                            </ToggleButton.Content>
+                                                            <materialDesign:ToggleButtonAssist.OnContent>
+                                                                <materialDesign:PackIcon Kind="Cancel" />
+                                                            </materialDesign:ToggleButtonAssist.OnContent>
+                                                        </ToggleButton>
+                                                        <TextBlock Style="{StaticResource MaterialDesignOverlineTextBlock}" HorizontalAlignment="Center" Text="Activar programacion"/>
+                                                    </StackPanel>
+                                                </Grid>
                                                 
                                             </StackPanel>
                                         </Grid>
@@ -399,7 +415,7 @@
                                     <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
                                 </Border.Effect>
                                 <StackPanel Orientation="Vertical">
-                                    <DataGrid x:Name="Tabla" HorizontalAlignment="Center" IsEnabled="False"/>
+                                    <DataGrid x:Name="Tabla" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" />
                                 </StackPanel>
                             </Border>
                         </ScrollViewer>
