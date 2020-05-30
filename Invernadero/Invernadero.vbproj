@@ -261,14 +261,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actuador.vb" />
+    <Compile Include="Ambiente.vb" />
     <Compile Include="Control.xaml.vb">
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control_datos.vb" />
     <Compile Include="Control_ventanas.vb" />
+    <Compile Include="Historial_Invernadero.vb" />
+    <Compile Include="Historico_Invernadero.vb" />
     <Compile Include="MainGUI.xaml.vb">
       <DependentUpon>MainGUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Registro_Actuador.vb" />
     <Compile Include="Usuario.xaml.vb">
       <DependentUpon>Usuario.xaml</DependentUpon>
     </Compile>
