@@ -10,6 +10,7 @@ Public Class Control_datos
     Private Shared historial_co2 As LiveCharts.SeriesCollection
     Private Shared etiquetas_co2 As New List(Of String)
     Private Shared formato_AxisY As Func(Of Double, String)
+    Private Shared FechaArray(10) As String
 
     Private Shared interno_temperarura As String = "1"
     Private Shared externo_temperarura As String = "2"
@@ -27,31 +28,36 @@ Public Class Control_datos
     Public Sub New()
 
 
+
     End Sub
     Public Sub New(username As String, Password As String)
         Dim sql As String
+        Dim sql2 As String
         Dim Mysql As ConexionMysql = New ConexionMysql()
         Me.Username = username
         Me.Password = Password
         sql = "SELECT * FROM ta_historial_invernadero WHERE inver_id= " & InvernaderoID & " and fecha_historial=(select max(fecha_historial) from ta_historial_invernadero);
 "
-
         Dim data As DataSet = Mysql.consulta(sql, "ta_historial_invernadero")
-
         InternoTemperatura = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("his_temperatura_int"), "###")
-
-        ExternoTemperatura =  Format(data.Tables("ta_historial_invernadero").Rows(0).Item("his_temperatura_ex"), "###")
+        ExternoTemperatura = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("his_temperatura_ex"), "###")
         InternoHumedad = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("hist_humedad_suelo_int"), "###")
-
         ExternoHumedad = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("hist_humedad_suelo_ex"), "###")
         InternoC02 = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("hist_Co2_int"), "###")
         ExternoC02 = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("his_Co2_ext"), "###")
+        data.Clear()
 
+        sql2 = "Select date_format(fecha_historial,'%d/%m/%y') from invernadero.ta_historial_invernadero  group by(date_format(fecha_historial,'%d/%m/%y') ) asc LIMIT 10 ;"
+        data = Mysql.consulta(sql2, "ta_historial_invernadero")
+        For i = 0 To 9
+            FechaArray(i) = data.Tables("ta_historial_invernadero").Rows(i).Item("date_format(fecha_historial,'%d/%m/%y')")
+        Next
 
         Tiempo_historial()
         Humedad_historial()
         Co2_historial()
     End Sub
+
 
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
@@ -300,8 +306,9 @@ Public Class Control_datos
             HistorialTiempo(1).Values.Add(CDbl(i + (2.3 * i) ^ 2))
         Next
         '---Aqui se ingresan las etiquetas del eje X---
-        For i = 1 To 10
-            EtiquetasTiempo.Add("str-" & "Frodo")
+        For i = 0 To 9
+
+            EtiquetasTiempo.Add(FechaArray(i))
         Next
         '---Se define el formato del eje Y---
         FormatoAxisY = Function(value) value.ToString("N")
@@ -325,8 +332,8 @@ Public Class Control_datos
             HistorialHumedad(1).Values.Add(CDbl(i + (2.3 * i) ^ (1 / 2)))
         Next
         '---Aqui se ingresan las etiquetas del eje X---
-        For i = 1 To 10
-            EtiquetasHumedad.Add("str-" & CStr(i))
+        For i = 0 To 9
+            EtiquetasHumedad.Add(FechaArray(i))
         Next
         '---Se define el formato del eje Y---
         FormatoAxisY = Function(value) value.ToString("N")
@@ -350,8 +357,8 @@ Public Class Control_datos
             HistorialCo2(1).Values.Add(CDbl(5 * i))
         Next
         '---Aqui se ingresan las etiquetas del eje X---
-        For i = 1 To 10
-            EtiquetasCo2.Add("str-" & CStr(i))
+        For i = 0 To 9
+            EtiquetasCo2.Add(FechaArray(i))
         Next
         '---Se define el formato del eje Y---
         FormatoAxisY = Function(value) value.ToString("N")
