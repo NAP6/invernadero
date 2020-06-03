@@ -3,6 +3,7 @@
 Public Class Historial_Invernadero
     Private registro_historicov As List(Of Historico_Invernadero)
 
+
     Public Property Registro_historico As List(Of Historico_Invernadero)
         Get
             Return registro_historicov
