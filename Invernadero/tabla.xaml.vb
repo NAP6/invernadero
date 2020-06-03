@@ -1,4 +1,17 @@
-﻿Public Class Usuario
+﻿
+Public Class tabla
+    Public datos As Control_datos
+
+
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+        datos = New Control_datos()
+        Me.DataContext = datos
+        Tabla.ItemsSource = datos.datRec
+
+    End Sub
     Private Sub GridBarraTitulo_MouseDown(sender As Object, e As MouseButtonEventArgs)
         DragMove()
     End Sub
@@ -36,12 +49,5 @@
         Dim ventana As Control_ventanas = New Control_ventanas()
         ventana.cambiar("configuracion")
     End Sub
-    Private Sub Btn_Actualizar_Click(sender As Object, e As RoutedEventArgs)
-        Dim Contrasenia1 As String = Contrasenia.Password
-        Dim Contrasenia2 As String = NuevaContrasenia.Password
 
-        Dim correo As String = CorreoUsuario.Text
-
-
-    End Sub
 End Class

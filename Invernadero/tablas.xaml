@@ -1,0 +1,24 @@
+﻿<Window x:Class="tablas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Invernadero"
+        mc:Ignorable="d"
+        Title="tablas" Height="450" Width="800">
+    <Grid>
+        <Grid  Background="#FFDEDFE0">
+            <ScrollViewer>
+                <Border Margin="5" MinWidth="400" Background="White" VerticalAlignment="Top" Padding="30" CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                    </Border.Effect>
+                    <StackPanel Orientation="Vertical">
+                        <DataGrid x:Name="Tabla" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" />
+                    </StackPanel>
+                </Border>
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>

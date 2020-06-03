@@ -64,6 +64,16 @@ Control
 InitializeComponent
 </summary>
 </member>
+<member name="T:Invernadero.tabla">
+<summary>
+tabla
+</summary>
+</member>
+<member name="M:Invernadero.tabla.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Invernadero.Usuario">
 <summary>
 Usuario

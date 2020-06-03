@@ -11,13 +11,15 @@ Public Class Control_datos
     Private Shared etiquetas_co2 As New List(Of String)
     Private Shared formato_AxisY As Func(Of Double, String)
     Private Shared FechaArray(10) As String
+    Private Shared FechaArray2(10) As String
 
     Private Shared interno_temperarura As String = "1"
     Private Shared externo_temperarura As String = "2"
     Private Shared interno_humedad As String = "3"
     Private Shared externo_humedad As String = "4"
-    Private Shared interno_c02 As String = "5"
-    Private Shared externo_c02 As String = "6"
+    Private Shared interno_c02 As String = "0"
+    Private Shared externo_c02 As String = "0"
+
 
     Private Shared servidor_dir As String = "192.168.0.103"
     Private Shared servidor_port As Int32 = 1880
@@ -25,14 +27,17 @@ Public Class Control_datos
     Private Shared client_username As String = "nicolas"
     Private Shared client_password As String = "nico05061998"
     Private Shared invernadero_id As String = "100"
+
+    Private Shared dat As List(Of Datos) = New List(Of Datos)()
+
+
     Public Sub New()
-
-
 
     End Sub
     Public Sub New(username As String, Password As String)
         Dim sql As String
         Dim sql2 As String
+
         Dim Mysql As ConexionMysql = New ConexionMysql()
         Me.Username = username
         Me.Password = Password
@@ -46,13 +51,19 @@ Public Class Control_datos
         InternoC02 = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("hist_Co2_int"), "###")
         ExternoC02 = Format(data.Tables("ta_historial_invernadero").Rows(0).Item("his_Co2_ext"), "###")
         data.Clear()
-
         sql2 = "Select date_format(fecha_historial,'%d/%m/%y') from invernadero.ta_historial_invernadero  group by(date_format(fecha_historial,'%d/%m/%y') ) asc LIMIT 10 ;"
         data = Mysql.consulta(sql2, "ta_historial_invernadero")
         For i = 0 To 9
             FechaArray(i) = data.Tables("ta_historial_invernadero").Rows(i).Item("date_format(fecha_historial,'%d/%m/%y')")
         Next
+        data.Clear()
+        sql2 = "Select fecha_historial,his_temperatura_ex,his_temperatura_int,hist_humedad_suelo_ex,hist_humedad_suelo_int,his_Co2_ext,hist_Co2_int from invernadero.ta_historial_invernadero where inver_id='" & InvernaderoID & "';"
+        data = Mysql.consulta(sql2, "ta_historial_invernadero")
 
+        For i = 0 To data.Tables("ta_historial_invernadero").Rows.Count - 1
+
+            dat.Add(New Datos(data.Tables("ta_historial_invernadero").Rows(i).Item("fecha_historial"), data.Tables("ta_historial_invernadero").Rows(i).Item("his_temperatura_ex"), data.Tables("ta_historial_invernadero").Rows(i).Item("his_temperatura_int"), data.Tables("ta_historial_invernadero").Rows(i).Item("hist_humedad_suelo_ex"), data.Tables("ta_historial_invernadero").Rows(i).Item("hist_humedad_suelo_int"), data.Tables("ta_historial_invernadero").Rows(i).Item("his_Co2_ext"), data.Tables("ta_historial_invernadero").Rows(i).Item("hist_Co2_int")))
+        Next
         Tiempo_historial()
         Humedad_historial()
         Co2_historial()
@@ -268,7 +279,6 @@ Public Class Control_datos
         Get
             Return etiquetas_co2
         End Get
-
         Set(ByVal value As List(Of String))
             If Not (value.Equals(etiquetas_co2)) Then
                 etiquetas_Humedad = value
@@ -365,4 +375,36 @@ Public Class Control_datos
     End Sub
 
 
+    Public Property datRec() As List(Of Datos)
+        Get
+            Return dat
+        End Get
+
+        Set(ByVal value As List(Of Datos))
+            If Not (value.Equals(dat)) Then
+                dat = value
+                NotifyPropertyChanged("datRec")
+            End If
+        End Set
+    End Property
+
+End Class
+Public Class Datos
+    Public Property fecha As Date
+    Public Property temeratura_esterior As Double
+    Public Property temeratura_interior As Double
+    Public Property humedad_esterior As Double
+    Public Property humedad_interior As Double
+    Public Property co2_esterior As Double
+    Public Property co2_interior As Double
+
+    Public Sub New(fecha As Date, t_e As Double, t_i As Double, h_e As Double, h_i As Double, c_e As Double, c_i As Double)
+        Me.fecha = fecha
+        Me.temeratura_esterior = t_e
+        Me.temeratura_interior = t_i
+        Me.humedad_esterior = h_e
+        Me.humedad_interior = h_i
+        Me.co2_esterior = c_e
+        Me.co2_interior = c_i
+    End Sub
 End Class

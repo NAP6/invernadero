@@ -23,7 +23,7 @@
                 aux_ventana = New Usuario()
                 tipo = "perfil"
             Case "tablas"
-                aux_ventana = New Escritorio()
+                aux_ventana = New tabla()
                 tipo = "tablas"
             Case "invernadero"
                 aux_ventana = New Usuario()

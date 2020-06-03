@@ -97,3 +97,5 @@ C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\bin\Debug\MySql.Data.x
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\bin\Debug\MySql.Data.EntityFramework.xml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\bin\Debug\MySql.Web.xml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.exe.config
+C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\tabla.g.vb
+C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\tabla.baml
