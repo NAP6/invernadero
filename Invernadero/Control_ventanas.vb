@@ -20,19 +20,19 @@
                 aux_ventana = New Escritorio()
                 tipo = "escritorio"
             Case "perfil"
-                aux_ventana = New Usuario()
+                'aux_ventana = New Usuario()
                 tipo = "perfil"
             Case "tablas"
                 aux_ventana = New Escritorio()
                 tipo = "tablas"
             Case "invernadero"
-                aux_ventana = New Usuario()
+                'aux_ventana = New Usuario()
                 tipo = "invernadero"
             Case "control"
                 aux_ventana = New Control()
                 tipo = "control"
             Case "configuracion"
-                aux_ventana = New Usuario()
+                'aux_ventana = New Usuario()
                 tipo = "configuracion"
             Case Else
                 aux_ventana = New Login()

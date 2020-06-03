@@ -9,12 +9,24 @@ Invernadero
 none
 false
 
+<<<<<<< HEAD
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\Application.xaml
+=======
+C:\Users\NICO\source\repos\Invernadero\Invernadero\Application.xaml
+<<<<<<< Updated upstream
+>>>>>>> ed91ac43a9e29ec2f64307dbeb189eef2d614439
 5180313968
 
 181487345970
 131-1241196143
 Control.xaml;Escritorio.xaml;Login.xaml;MainGUI.xaml;Usuario.xaml;
+=======
+4-2112451535
 
-False
+131480912650
+130-204214598
+Control.xaml;Escritorio.xaml;Login.xaml;Usuario.xaml;
+>>>>>>> Stashed changes
+
+True
 
