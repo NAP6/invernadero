@@ -263,6 +263,7 @@
     </ApplicationDefinition>
     <Compile Include="Actuador.vb" />
     <Compile Include="Ambiente.vb" />
+    <Compile Include="Cliente_Broker.vb" />
     <Compile Include="Control.xaml.vb">
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
@@ -270,13 +271,14 @@
     <Compile Include="Control_ventanas.vb" />
     <Compile Include="Historial_Invernadero.vb" />
     <Compile Include="Historico_Invernadero.vb" />
+    <Compile Include="Invernadero.vb" />
     <Compile Include="MainGUI.xaml.vb">
       <DependentUpon>MainGUI.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registro_Actuador.vb" />
-    <Compile Include="Usuario.xaml.vb">
-      <DependentUpon>Usuario.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Registro_invernadero.vb" />
+    <Compile Include="Usuario.vb" />
+    <Compile Include="UsuarioNotify.vb" />
     <Page Include="Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -300,10 +302,6 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Page Include="MainGUI.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Usuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

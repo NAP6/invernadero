@@ -10,11 +10,19 @@ none
 false
 
 C:\Users\NICO\source\repos\Invernadero\Invernadero\Application.xaml
+<<<<<<< Updated upstream
 5180313968
 
 12-15235134
 128-21881006
 Control.xaml;Escritorio.xaml;Login.xaml;MainGUI.xaml;Usuario.xaml;
+=======
+4-2112451535
 
-False
+131480912650
+130-204214598
+Control.xaml;Escritorio.xaml;Login.xaml;Usuario.xaml;
+>>>>>>> Stashed changes
+
+True
 
