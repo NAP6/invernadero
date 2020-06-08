@@ -4,17 +4,32 @@
 winexe
 VB
 .vb
-C:\Users\NICO\source\repos\Invernadero\Invernadero\obj\Debug\
+C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\
 Invernadero
 none
 false
 
+<<<<<<< HEAD
+C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\Application.xaml
+=======
 C:\Users\NICO\source\repos\Invernadero\Invernadero\Application.xaml
+<<<<<<< HEAD
 41868891427
 
 211662727838
 128-21881006
 Control.xaml;Escritorio.xaml;Login.xaml;MainGUI.xaml;
+=======
+<<<<<<< Updated upstream
+>>>>>>> ed91ac43a9e29ec2f64307dbeb189eef2d614439
+5180313968
+
+181487345970
+131-1241196143
+Control.xaml;Escritorio.xaml;Login.xaml;MainGUI.xaml;Usuario.xaml;
+=======
+4-2112451535
+>>>>>>> abfd867833206dcf418a37402699f33dfb4221a1
 
 False
 
