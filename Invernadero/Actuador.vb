@@ -3,6 +3,16 @@
     Private tipov As String
     Private estadov As Boolean
     Private ultimo_cambiov As Date
+    Public Sub New()
+
+    End Sub
+    Public Sub New(nomebrev As String, tipov As String, estadov As Boolean, ultimo_cambio As Date)
+        Me.nomebrev = nomebrev
+        Me.tipov = tipov
+        Me.estadov = estadov
+        Me.Ultimo_cambio = ultimo_cambio
+    End Sub
+
 
     Public Property Nomebre As String
         Get

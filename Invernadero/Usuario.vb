@@ -4,6 +4,7 @@
     Protected correov As String
     Protected invernaderos_propiosv As Registro_invernadero
 
+
     Public Property Nombre As String
         Get
             Return nombrev

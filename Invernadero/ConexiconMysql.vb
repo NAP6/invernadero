@@ -50,7 +50,6 @@ Public Class ConexiconMysql
         Dim conn As MySqlConnection = conectar()
         Dim sql As String
         Dim Lista As Ambiente
-
         Try
             sql = "Select his_temperatura_ex,his_humedad_aire_ex,hist_humedad_suelo_ex,his_Co2_ext from invernadero.ta_historial_invernadero where inver_id='" & invernadero & "' order by(fecha_historial)  desc LIMIT 1;"
             conn.Open()
@@ -58,10 +57,8 @@ Public Class ConexiconMysql
             DataAdapter.Fill(Data, "ta_historial_invernadero")
             If (Data.Tables("ta_historial_invernadero").Rows.Count() <> 0) Then
                 Lista = New Ambiente(Data.Tables("ta_historial_invernadero").Rows(0).Item("his_temperatura_ex"), Data.Tables("ta_historial_invernadero").Rows(0).Item("his_humedad_aire_ex"), Data.Tables("ta_historial_invernadero").Rows(0).Item("hist_humedad_suelo_ex"), Data.Tables("ta_historial_invernadero").Rows(0).Item("his_Co2_ext"))
-
             Else
                 MessageBox.Show("No hay Datos")
-
             End If
 
         Catch ex As Exception
@@ -97,29 +94,16 @@ Public Class ConexiconMysql
 
 
     Public Function getActuadores(invernadero As Integer) As Registro_Actuador
-        Dim DataAdapter As MySqlDataAdapter
-        Dim Data As DataSet
-        Dim conn As MySqlConnection = conectar()
-        Dim sql As String
-        Dim Lista As Registro_Actuador
-        Try
-            sql = "Select actu_nombre, actu_descripcion from invernadero.ta_actuadores;"
-            conn.Open()
-            DataAdapter = New MySqlDataAdapter(sql, conn)
-            DataAdapter.Fill(Data, "ta_actuadores")
-            If (Data.Tables("ta_actuadores").Rows.Count() <> 0) Then
 
 
-            Else
-                MessageBox.Show("No hay Datos")
+    End Function
 
-            End If
+    Public Function getInvernadero(invernadero As Integer) As Invernadero
 
-        Catch ex As Exception
-            MessageBox.Show(ex.ToString)
-        End Try
-        conn.Close()
-        Return Lista
+    End Function
+    Public Function getUsuario(username As String) As Usuario
+
+
     End Function
 
 
