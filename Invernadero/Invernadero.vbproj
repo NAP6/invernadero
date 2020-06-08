@@ -266,11 +266,8 @@
     </ApplicationDefinition>
     <Compile Include="Actuador.vb" />
     <Compile Include="Ambiente.vb" />
-<<<<<<< HEAD
     <Compile Include="ConexiconMysql.vb" />
-=======
     <Compile Include="Cliente_Broker.vb" />
->>>>>>> ed91ac43a9e29ec2f64307dbeb189eef2d614439
     <Compile Include="Control.xaml.vb">
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
