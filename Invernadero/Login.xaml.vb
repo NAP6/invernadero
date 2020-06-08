@@ -12,8 +12,15 @@
         Dim contrasenia As String = box_contrasenia.Password
 
         If usuario = "nicolas" And contrasenia = "1234" Then
-            Dim ventana As Control_ventanas = New Control_ventanas()
-            ventana.cambiar("escritorio")
+            Dim usuario_class As UsuarioNotify = New UsuarioNotify()
+            Dim brocker As Cliente_Broker
+            Dim gui As MainGUI
+            'Todas las consultas de la base de datos para llenar la variable usuario van aqui
+            '####################################
+            '####################################
+            '####################################
+            brocker = New Cliente_Broker(usuario, contrasenia, usuario_class)
+            gui = New MainGUI(usuario_class)
         End If
     End Sub
 End Class

@@ -1,28 +1,20 @@
 ﻿Public Class MainGUI
-    Private dat As List(Of Datos) = New List(Of Datos)()
-    Public Sub New()
+    Private Property usuario As UsuarioNotify
+    Private Property inver_actual As Integer = 0
+    Public Sub New(ByRef usuario As UsuarioNotify)
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
-
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-        dat.Add(New Datos(New Date(), 12, 12, 12, 12, 12, 12))
-
-        Tabla.ItemsSource = dat
-
-        combo_invernadero.Items.Add("Invrnadero 1")
-        combo_invernadero.Items.Add("Invrnadero 2")
+        Me.usuario = usuario
+        'usuario.Invernaderos_propios.getID(inver_actual).Historial.getFechaAVG()
+        inver_actual = Me.usuario.Invernaderos_propios.Registro_invernadero(0).Id
+        For Each inver In Me.usuario.Invernaderos_propios.Registro_invernadero
+            combo_invernadero.Items.Add(inver.Nombre)
+        Next
+        combo_invernadero.SelectedIndex = inver_actual
     End Sub
-
+    Private Sub cargar_datos()
+        Tabla.ItemsSource = Me.usuario.Invernaderos_propios.getID(inver_actual).Historial
+    End Sub
     Private Sub btn_enfriar_Click(sender As Object, e As RoutedEventArgs)
         'client.Publish(datos.Username + "/" + datos.InvernaderoID + "/actuador/enfriar", Encoding.Default.GetBytes("Activar"))
     End Sub
@@ -32,24 +24,11 @@
     Private Sub btn_calentar_Click(sender As Object, e As RoutedEventArgs)
         'client.Publish(datos.Username + "/" + datos.InvernaderoID + "/actuador/calentar", Encoding.Default.GetBytes("Activar"))
     End Sub
-End Class
-
-Public Class Datos
-    Public Property fecha As Date
-    Public Property temeratura_esterior As Double
-    Public Property temeratura_interior As Double
-    Public Property humedad_esterior As Double
-    Public Property humedad_interior As Double
-    Public Property co2_esterior As Double
-    Public Property co2_interior As Double
-
-    Public Sub New(fecha As Date, t_e As Double, t_i As Double, h_e As Double, h_i As Double, c_e As Double, c_i As Double)
-        Me.fecha = fecha
-        Me.temeratura_esterior = t_e
-        Me.temeratura_interior = t_i
-        Me.humedad_esterior = h_e
-        Me.humedad_interior = h_i
-        Me.co2_esterior = c_e
-        Me.co2_interior = c_i
+    Private Sub btn_salir_Click(sender As Object, e As RoutedEventArgs)
+        Me.Close()
+    End Sub
+    Private Sub combo_invernadero_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles combo_invernadero.SelectionChanged
+        inver_actual = usuario.Invernaderos_propios.Registro_invernadero(combo_invernadero.SelectedIndex).Id
+        cargar_datos()
     End Sub
 End Class
