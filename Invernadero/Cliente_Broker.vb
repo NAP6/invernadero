@@ -11,7 +11,7 @@ Public Class Cliente_Broker
     Private client As MqttClient
     Private subcripciones As List(Of String)
 
-    Public Sub New(username As String, password As String, usuario As UsuarioNotify)
+    Public Sub New(username As String, password As String, ByRef usuario As UsuarioNotify)
         Me.username = username
         Me.password = password
         Me.usuario = usuario
@@ -27,7 +27,7 @@ Public Class Cliente_Broker
                 MsgBox("No se pudo establecer coneccion con el broker")
             End If
 
-            Dim elementos() As String = {"/sensor/in_T", "/sensor/out_T", "/sensor/in_H", "/sensor/out_H", "/sensor/in_C""/sensor/out_C"}
+            Dim elementos() As String = {"/sensor/in_T", "/sensor/out_T", "/sensor/in_H", "/sensor/out_H", "/sensor/in_H_A", "/sensor/out_H_A", "/sensor/in_C""/sensor/out_C"}
             Dim Qos() As Byte = {0}
             Dim aux As String
             For Each elem In usuario.Invernaderos_propios.Registro_invernadero
@@ -57,6 +57,10 @@ Public Class Cliente_Broker
                     usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Humedad_suelo = Encoding.Default.GetString(e.Message)
                 Case "out_H"
                     usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Humedad_suelo = Encoding.Default.GetString(e.Message)
+                Case "in_H_A"
+                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Humedad_aire = Encoding.Default.GetString(e.Message)
+                Case "out_H_A"
+                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Humedad_aire = Encoding.Default.GetString(e.Message)
                 Case "in_C"
                     usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Co2 = Encoding.Default.GetString(e.Message)
                 Case "out_C"

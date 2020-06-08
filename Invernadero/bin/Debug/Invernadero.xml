@@ -74,16 +74,6 @@ MainGUI
 InitializeComponent
 </summary>
 </member>
-<member name="T:Invernadero.Usuario">
-<summary>
-Usuario
-</summary>
-</member>
-<member name="M:Invernadero.Usuario.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
 <member name="T:Invernadero.Application">
 <summary>
 Application
