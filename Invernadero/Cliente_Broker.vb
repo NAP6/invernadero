@@ -3,7 +3,7 @@ Imports M2Mqtt
 Imports M2Mqtt.Messages
 
 Public Class Cliente_Broker
-    Private direccion_urlv As String = ""
+    Private direccion_urlv As String = "192.168.0.103"
     Private puerto As Integer = 1880
     Private usuario As UsuarioNotify
     Private username As String
@@ -27,16 +27,14 @@ Public Class Cliente_Broker
                 MsgBox("No se pudo establecer coneccion con el broker")
             End If
 
-            Dim elementos() As String = {"/sensor/in_T", "/sensor/out_T", "/sensor/in_H", "/sensor/out_H", "/sensor/in_H_A", "/sensor/out_H_A", "/sensor/in_C""/sensor/out_C"}
             Dim Qos() As Byte = {0}
             Dim aux As String
             For Each elem In usuario.Invernaderos_propios.Registro_invernadero
-                For Each top In elementos
-                    aux = username + "/" + elem.Id + top
-                    subcripciones.Add(aux)
-                    Dim Topic() As String = {aux}
-                    client.Subscribe(Topic, Qos)
-                Next
+                aux = username + "/" + elem.Id + "/invernadero"
+                subcripciones.Add(aux)
+                Dim Topic() As String = {aux}
+                client.Subscribe(Topic, Qos)
+
             Next
 
         Catch ex As M2Mqtt.Exceptions.MqttClientException
@@ -47,35 +45,28 @@ Public Class Cliente_Broker
     Private Sub Client_MqttMsgPublishReceived(ByVal sender As Object, ByVal e As MqttMsgPublishEventArgs)
 
         If subcripciones.Contains(e.Topic.ToString()) Then
-            Dim aux() As String = e.Topic.ToString().Split(New Char() {"\"c})
-            Select Case e.Topic.ToString()
-                Case "in_T"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Temperatura = Encoding.Default.GetString(e.Message)
-                Case "out_T"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Temperatura = Encoding.Default.GetString(e.Message)
-                Case "in_H"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Humedad_suelo = Encoding.Default.GetString(e.Message)
-                Case "out_H"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Humedad_suelo = Encoding.Default.GetString(e.Message)
-                Case "in_H_A"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Humedad_aire = Encoding.Default.GetString(e.Message)
-                Case "out_H_A"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Humedad_aire = Encoding.Default.GetString(e.Message)
-                Case "in_C"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_interior.Co2 = Encoding.Default.GetString(e.Message)
-                Case "out_C"
-                    usuario.Invernaderos_propios.getID(aux(1)).Ambiente_exterior.Co2 = Encoding.Default.GetString(e.Message)
-                Case Else
-                    MsgBox("Publicado en: " + e.Topic.ToString + " : " + Encoding.Default.GetString(e.Message))
-            End Select
+            Dim aux() As String = e.Topic.ToString().Split(New Char() {"/"c})
+            Dim InverId As Integer = Convert.ToInt32(aux(1))
+            Dim mss As String = Encoding.Default.GetString(e.Message)
+            Dim aux2() As String = mss.Split(New Char() {":"c})
+            Dim ambiente() As String = aux2(0).Split(New Char() {"/"c})
+            Dim actuador() As String = aux2(1).Split(New Char() {"/"c})
+            Dim aux3() As String = ambiente(0).Split(New Char() {"-"c})
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_exterior.Temperatura = Convert.ToDouble(aux(1))
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_interior.Temperatura = Convert.ToDouble(aux(0))
+            aux3 = ambiente(1).Split(New Char() {"-"c})
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_exterior.Co2 = Convert.ToDouble(aux(1))
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_interior.Co2 = Convert.ToDouble(aux(0))
+            aux3 = ambiente(2).Split(New Char() {"-"c})
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_exterior.Humedad_suelo = Convert.ToDouble(aux(1))
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_interior.Humedad_suelo = Convert.ToDouble(aux(0))
+            aux3 = ambiente(3).Split(New Char() {"-"c})
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_exterior.Humedad_aire = Convert.ToDouble(aux(1))
+            usuario.Invernaderos_propios.getID(InverId).Ambiente_interior.Humedad_aire = Convert.ToDouble(aux(0))
         End If
-
-
     End Sub
     Private Sub Client_Disconnect(sender As Object, e As EventArgs)
-
     End Sub
-
     Public Sub desconectar()
         If (client IsNot Nothing AndAlso client.IsConnected()) Then
             client.Disconnect()

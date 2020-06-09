@@ -1,19 +1,16 @@
 ﻿Public Class MainGUI
-    Private Property usuario As UsuarioNotify
+
+    Private Property Cliente As Cliente_Broker
+
     Private Property inver_actual As Integer = 0
-    Public Sub New(ByRef usuario As UsuarioNotify)
+    Public Sub New(ByRef cliente As Cliente_Broker)
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
-        Me.usuario = usuario
+        Me.Cliente = cliente
         'usuario.Invernaderos_propios.getID(inver_actual).Historial.getFechaAVG()
-        inver_actual = Me.usuario.Invernaderos_propios.Registro_invernadero(0).Id
-        For Each inver In Me.usuario.Invernaderos_propios.Registro_invernadero
-            combo_invernadero.Items.Add(inver.Nombre)
-        Next
-        combo_invernadero.SelectedIndex = inver_actual
     End Sub
     Private Sub cargar_datos()
-        Tabla.ItemsSource = Me.usuario.Invernaderos_propios.getID(inver_actual).Historial
+
     End Sub
     Private Sub btn_enfriar_Click(sender As Object, e As RoutedEventArgs)
         'client.Publish(datos.Username + "/" + datos.InvernaderoID + "/actuador/enfriar", Encoding.Default.GetBytes("Activar"))
@@ -28,7 +25,6 @@
         Me.Close()
     End Sub
     Private Sub combo_invernadero_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles combo_invernadero.SelectionChanged
-        inver_actual = usuario.Invernaderos_propios.Registro_invernadero(combo_invernadero.SelectedIndex).Id
-        cargar_datos()
+
     End Sub
 End Class

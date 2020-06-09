@@ -1,16 +1,15 @@
 ﻿Public Class Actuador
     Private nomebrev As String
-    Private tipov As String
+    Private tipov As Integer
     Private estadov As Boolean
     Private ultimo_cambiov As Date
     Public Sub New()
 
     End Sub
-    Public Sub New(nomebrev As String, tipov As String, estadov As Boolean, ultimo_cambio As Date)
+    Public Sub New(nomebrev As String, tipov As Integer, estadov As Boolean)
         Me.nomebrev = nomebrev
         Me.tipov = tipov
         Me.estadov = estadov
-        Me.Ultimo_cambio = ultimo_cambio
     End Sub
 
 
@@ -23,11 +22,11 @@
         End Set
     End Property
 
-    Public Property Tipo As String
+    Public Property Tipo As Integer
         Get
             Return tipov
         End Get
-        Set(value As String)
+        Set(value As Integer)
             tipov = value
         End Set
     End Property

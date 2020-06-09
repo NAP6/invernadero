@@ -7,6 +7,19 @@
     Private actuadoresv As Registro_Actuador
     Private historialv As Historial_Invernadero
 
+    Public Sub New()
+
+    End Sub
+    Public Sub New(id As Integer, nombre As String, descripcion As String, ambiente_exterior As Ambiente, ambiente_interior As Ambiente, actuadores As Registro_Actuador, historial As Historial_Invernadero)
+        Me.Id = id
+        Me.Nombre = nombre
+        Me.Descripcion = descripcion
+        Me.Ambiente_exterior = ambiente_exterior
+        Me.Ambiente_interior = ambiente_interior
+        Me.Actuadores = actuadores
+        Me.Historial = historial
+    End Sub
+
     Public Property Id As Integer
         Get
             Return idv

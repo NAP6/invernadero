@@ -9,18 +9,19 @@ Public Class UsuarioNotify
     Private Sub NotifyPropertyChanged(ByVal info As String)
         RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(info))
     End Sub
-
-    Public Property Nombre As String
+    Public Property Contrasenia As String
         Get
-            Return nombrev
+            Return contraseniav
         End Get
         Set(value As String)
-            If Not (nombrev = value) Then
-                nombrev = value
-                NotifyPropertyChanged("Nombre")
+
+            If Not (contraseniav = value) Then
+                contraseniav = value
+                NotifyPropertyChanged("Contrasenia")
             End If
         End Set
     End Property
+
 
     Public Property Usuario As String
         Get

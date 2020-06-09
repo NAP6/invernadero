@@ -7,13 +7,17 @@
     Public Sub New()
 
     End Sub
-
     Public Sub New(ambiente_exterior As Ambiente, ambiente_interior As Ambiente, fecha As Date)
         Me.Ambiente_exterior = ambiente_exterior
         Me.Ambiente_interior = ambiente_interior
         Me.Fecha = fecha
     End Sub
-
+    Public Sub New(ambiente_exterior As Ambiente, ambiente_interior As Ambiente, fecha As Date, actuadores As Registro_Actuador)
+        Me.Ambiente_exterior = ambiente_exterior
+        Me.Ambiente_interior = ambiente_interior
+        Me.Fecha = fecha
+        Me.Actuadores = actuadores
+    End Sub
     Public Property Ambiente_exterior As Ambiente
         Get
             Return ambiente_exteriorv

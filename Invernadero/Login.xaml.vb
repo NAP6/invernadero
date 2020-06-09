@@ -10,17 +10,13 @@
     Private Sub Button_Click(sender As Object, e As RoutedEventArgs)
         Dim usuario As String = box_usuario.Text
         Dim contrasenia As String = box_contrasenia.Password
-
-        If usuario = "nicolas" And contrasenia = "1234" Then
-            Dim usuario_class As UsuarioNotify = New UsuarioNotify()
+        Dim conexion As ConexiconMysql = New ConexiconMysql()
+        If conexion.ComprobarUsuario(usuario, contrasenia) Then
+            Dim usuario_class As UsuarioNotify = conexion.getUsuario(usuario)
             Dim brocker As Cliente_Broker
             Dim gui As MainGUI
-            'Todas las consultas de la base de datos para llenar la variable usuario van aqui
-            '####################################
-            '####################################
-            '####################################
             brocker = New Cliente_Broker(usuario, contrasenia, usuario_class)
-            gui = New MainGUI(usuario_class)
+            gui = New MainGUI(brocker)
         End If
     End Sub
 End Class

@@ -1,16 +1,25 @@
 ﻿Public Class Usuario
-    Protected nombrev As String
+
     Protected usuariov As String
     Protected correov As String
+    Protected contraseniav As String
     Protected invernaderos_propiosv As Registro_invernadero
 
+    Public Sub New()
 
-    Public Property Nombre As String
+    End Sub
+    Public Sub New(usuario As String, correo As String, contrasenia As String, invernaderos As Registro_invernadero)
+        Me.Usuario = usuario
+        Me.Correo = correo
+        Me.Contrasenia = contrasenia
+        Me.Invernaderos_propios = invernaderos
+    End Sub
+    Public Property Contrasenia As String
         Get
-            Return nombrev
+            Return contraseniav
         End Get
         Set(value As String)
-            nombrev = value
+            contraseniav = value
         End Set
     End Property
 

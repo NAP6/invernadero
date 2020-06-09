@@ -59,7 +59,6 @@ C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Control.g.vb
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Escritorio.g.vb
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Login.g.vb
-C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Usuario.g.vb
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Application.g.vb
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero_MarkupCompile.cache
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero_MarkupCompile.lref
@@ -67,7 +66,6 @@ C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Application.
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Control.baml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Escritorio.baml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Login.baml
-C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Usuario.baml
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.g.resources
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.Resources.resources
 C:\Users\panat\Documents\nicolas2\invernadero\Invernadero\obj\Debug\Invernadero.vbproj.GenerateResource.cache
